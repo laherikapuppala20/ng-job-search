@@ -1,0 +1,32 @@
+<div *ngIf="jobDetails">
+    <div class="container">
+        <button class="textBlack" (click)="backToHome()" > <i class="fa fa-home" aria-hidden="true"></i> Back</button>
+        <div class="row header">
+            <div class="col-sm-1">
+                <img [src]="jobDetails.companyLogo" alt="Company Logo" />
+            </div>
+            <div class="jobtitle">
+                <h1>{{jobDetails.title}}</h1>
+                <mark class="tag">{{jobDetails.types}}</mark>&nbsp;
+                <mark class="tag">{{jobDetails.industries}}</mark>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p>
+                    <span class="textData">Published Date : </span>{{ jobDetails.publishDate | date : "M/d/yyyy" }}
+                </p>
+                <p>
+                    <span class="textData">Location : </span>{{ jobDetails.location }}
+                </p>
+                <p>
+                    <span class="textData">Reference : </span>{{ jobDetails.reference }}
+                </p>
+                <p>
+                    <span class="textData">Description : </span>
+                </p>
+                <p [innerHTML]="jobDetails.description"></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<ng-container *ngIf='!show;  else notshow'>
+    <div class="row data" *ngFor="let job of jobsData; let i = index">
+        <div class="col-sm-1">
+            <img [src]="job.companyLogo" alt="Company Logo" />
+        </div>
+        <div class="col-sm-10 jobTitle">
+            <div>
+                <b><a [routerLink]="['/jobs', job.id]">{{job.title}}</a></b>
+            </div>
+            <small class="smallText"> Company : {{job?.companyName}}, Reference : {{job?.reference}}</small>
+        </div>
+        <span>
+            <button (click)="toggleFavorite(i, job)" id="{{job.id}}" class="favoriteButton" [class.favoriteFilled]="favoriteJob(job.id)">
+                <i class="fas fa-star"></i>
+            </button>
+        </span>
+    </div>
+</ng-container>
+
+<ng-template #notshow>
+    <div class="row data" *ngFor="let job of favoriteJobs; let i = index">
+        <div class="col-sm-1">
+            <img [src]="job.companyLogo" alt="Logo" class="logo" /> 
+        </div>
+        <div class="col-sm-10 jobTitle">
+            <div>
+                <b><a [routerLink]="['/jobs', job.id]">{{job.title}}</a></b>
+            </div>
+            <small class="smallText"> company : {{job?.companyName}}, Reference : {{job?.reference}}</small>
+        </div>
+    </div>
+    <div class="notDataFound" *ngIf="favoriteJobs?.length === 0">
+        <span>No Data selected</span>
+    </div>
+</ng-template>

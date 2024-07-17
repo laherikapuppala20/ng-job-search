@@ -1,0 +1,21 @@
+.header {
+    text-align: center;
+}
+
+.button {
+    margin: 10px;
+}
+
+.button-group {
+    display: flex;
+    border: none;
+}
+
+.active-button {
+    background-color: grey;
+    color: #fff;
+}
+
+.container {
+    width: 50%;
+}

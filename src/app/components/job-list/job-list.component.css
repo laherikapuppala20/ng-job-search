@@ -1,0 +1,31 @@
+.data {
+    padding-bottom: 10px;
+}
+
+.active {
+    color: yellow;
+}
+
+.jobTitle {
+    padding-left: 20px;
+}
+
+.smallText{
+  color: black !important; 
+}
+
+.favoriteButton {
+    color: black; 
+    cursor: pointer;
+    background-color: #fffefe00;
+  }
+
+.favoriteFilled {
+    color: #ffc107;
+  }
+
+.notDataFound{
+    margin-top: 8rem;
+    text-align: center;
+    color: #000;
+  }
