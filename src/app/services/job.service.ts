@@ -14,8 +14,8 @@ export class JobService {
     this.loadedFavorites();
   }
   
-  getJobs(): Observable<JobData[]> {
-    return this.http.get<JobData[]>('/jobs',{ ...Option, responseType: 'json'});
+  getJobs(){
+    return this.http.get<JobData[]>('/jobs');
   } 
 
   getJobsDetials(job: number) {

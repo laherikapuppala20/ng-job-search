@@ -17,20 +17,21 @@ export class JobListComponent implements OnInit {
   favoriteData: boolean[] = [];
   currentUrl: string = '';
   show: boolean = false;
-  jobsDetailList: Subscription | undefined;
   favoriteJobs: JobData[] = [];
   
   constructor(private jobService: JobService, private route: Router) { }
 
   ngOnInit(): void {
     
-    this.getjobList();
-    this.jobsDetailList = this.jobService.getJobs().subscribe((res) => {
-      this.jobsData = res;
-    },
-      (error) => {
-        alert('Error in fetching jobs details:' + error.message);
-      })
+    this.getjobList(); 
+      if(this.jobsData.length == 0){
+        this.jobService.getJobs().subscribe(
+          (res) => this.jobsData = res,
+          (err) => {console.log(err) ; alert('Error in fetching jobs details:' + err.message);}
+        )
+      }else{
+
+      }
 
     this.currentUrl = this.route.url;
     if (this.currentUrl === '/favorite-jobs') {
@@ -59,7 +60,4 @@ export class JobListComponent implements OnInit {
     this.favoriteJobs = this.jobService.getFavoriteJobs();
   }
 
-  ngOnDestroy() {
-    this.jobsDetailList?.unsubscribe();
-  }
 }
